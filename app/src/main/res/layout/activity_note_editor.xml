@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="note"
-            type="com.chetan.note.data.Note" />
+            name="viewModel"
+            type="com.chetan.note.ui.editor.NoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,13 +34,13 @@
             android:id="@+id/text_note_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_16_dp"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@android:color/transparent"
             android:hint="@string/hint_note_title"
             android:inputType="textLongMessage"
             android:maxLength="100"
-
-            android:text="@={note.title}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.onTitleChanged(text)}"
+            android:text="@={viewModel.note.title}"
             android:textSize="@dimen/text_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,16 +50,17 @@
             android:id="@+id/text_note_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/margin_16_dp"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@android:color/transparent"
             android:ellipsize="none"
             android:gravity="top"
             android:hint="@string/hint_note_content"
             android:inputType="textMultiLine"
             android:lineSpacingExtra="@dimen/line_spacing"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.onContentChanged(text)}"
             android:scrollbars="vertical"
             android:singleLine="false"
-            android:text="@={note.contents}"
+            android:text="@={viewModel.note.contents}"
             android:textSize="@dimen/text_content"
             android:verticalScrollbarPosition="right"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -2,4 +2,7 @@
     <string name="app_name">Note Taking</string>
     <string name="hint_note_title">Title</string>
     <string name="hint_note_content">Content</string>
+    <string name="title_save">SAVE</string>
+    <string name="invalid_title">Add title!</string>
+    <string name="invalid_content">Add content!</string>
 </resources>

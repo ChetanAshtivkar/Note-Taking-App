@@ -2,7 +2,7 @@ package com.chetan.note.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.chetan.note.data.Note
+import com.chetan.note.data.model.Note
 
 /**
  * Created by Chetan on 08/03/20.
@@ -26,10 +26,15 @@ interface NoteDao {
     fun getCount(): Int
 
     @Transaction
-    fun addOrUpdate(note: Note) {
-        val id = insert(note).toInt()
-        if (id == -1) {
-            update(note)
+    fun addOrUpdate(note: Note) : Boolean {
+        try {
+            val id = insert(note).toInt()
+            if (id == -1) {
+                update(note)
+            }
+        } catch (e: Exception) {
+            return false
         }
+        return true
     }
 }

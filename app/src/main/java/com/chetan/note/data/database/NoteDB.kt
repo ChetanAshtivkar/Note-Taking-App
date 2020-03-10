@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.chetan.note.data.Note
+import com.chetan.note.data.model.Note
 
 /**
  * Created by Chetan on 2020-03-08.

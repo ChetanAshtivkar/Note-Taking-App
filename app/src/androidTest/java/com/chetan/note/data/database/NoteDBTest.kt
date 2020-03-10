@@ -3,7 +3,7 @@ package com.chetan.note.data.database
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.chetan.note.data.Note
+import com.chetan.note.data.model.Note
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.After

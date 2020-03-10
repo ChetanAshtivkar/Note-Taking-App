@@ -1,4 +1,4 @@
-package com.chetan.note.data
+package com.chetan.note.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,9 +13,9 @@ import java.util.*
 @TypeConverters(CommonTypeConverters::class)
 data class Note(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    var title: String,
-    var contents: String,
-    var createDate: Date,
-    var updateDate: Date
+    var id: Int = 0,
+    var title: String? = "",
+    var contents: String? = "",
+    var createDate: Date? = null,
+    var updateDate: Date? = null
 )
