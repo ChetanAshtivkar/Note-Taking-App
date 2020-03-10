@@ -1,9 +1,9 @@
-package com.chetan.note.model.database
+package com.chetan.note.data.database
 
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.chetan.note.model.Note
+import com.chetan.note.data.Note
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.After

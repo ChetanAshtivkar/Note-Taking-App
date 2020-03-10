@@ -1,8 +1,8 @@
-package com.chetan.note.model.database
+package com.chetan.note.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.chetan.note.model.Note
+import com.chetan.note.data.Note
 
 /**
  * Created by Chetan on 08/03/20.

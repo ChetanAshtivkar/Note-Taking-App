@@ -1,10 +1,10 @@
-package com.chetan.note.model.database
+package com.chetan.note.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.chetan.note.model.Note
+import com.chetan.note.data.Note
 
 /**
  * Created by Chetan on 2020-03-08.
