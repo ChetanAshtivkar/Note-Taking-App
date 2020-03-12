@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.chetan.note.common.CommonTypeConverters
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -18,4 +19,4 @@ data class Note(
     var contents: String? = "",
     var createDate: Date? = null,
     var updateDate: Date? = null
-)
+): Serializable

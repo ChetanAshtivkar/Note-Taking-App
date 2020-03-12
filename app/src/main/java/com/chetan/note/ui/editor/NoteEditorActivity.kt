@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.chetan.note.R
 import com.chetan.note.common.BaseActivity
 import com.chetan.note.data.database.NoteDB
+import com.chetan.note.data.model.Note
 import com.chetan.note.databinding.ActivityNoteEditorBinding
+import com.chetan.note.ui.noteslist.BUNDLE_NOTE
 
 class NoteEditorActivity : BaseActivity() {
     private lateinit var viewModel: NoteViewModel
@@ -23,8 +25,17 @@ class NoteEditorActivity : BaseActivity() {
 
         viewModel = ViewModelProvider(
             this,
-            NoteViewModelFactory(noteDao)
-        ).get(NoteViewModel::class.java)
+            NoteViewModelFactory(
+                noteDao, intent.extras?.let {
+                    it.getSerializable(BUNDLE_NOTE) as Note
+                } ?: run {
+                    Note()
+                }
+            )
+        ).get(
+            NoteViewModel::
+            class.java
+        )
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 

@@ -15,6 +15,8 @@ import com.chetan.note.data.database.NoteDB
 import com.chetan.note.databinding.ActivityNotesListBinding
 import com.chetan.note.ui.editor.NoteEditorActivity
 
+const val BUNDLE_NOTE = "BUNDLE_NOTE"
+
 class NotesListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNotesListBinding
     private lateinit var viewModel: NotesListViewModel
@@ -42,7 +44,11 @@ class NotesListActivity : AppCompatActivity() {
 
     private fun setAdapter() {
         adapter = NotesAdapter(NotesListener { note, position ->
-            //TODO
+            val bundle = Bundle()
+            bundle.putSerializable(BUNDLE_NOTE, note)
+            val intent = Intent(this@NotesListActivity, NoteEditorActivity::class.java)
+            intent.putExtras(bundle)
+            startActivity(intent)
         })
         binding.notesList.adapter = adapter
     }

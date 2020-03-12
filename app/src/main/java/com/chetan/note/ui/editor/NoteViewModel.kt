@@ -11,15 +11,13 @@ import java.util.*
 /**
  * Created by Chetan on 11/03/20.
  */
-class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
+class NoteViewModel(private val noteRepository: NoteRepository, val note: Note) : ViewModel() {
 
     private val _editorStatus = MutableLiveData<EditorStatus>()
     val editorStatus: LiveData<EditorStatus> = _editorStatus
 
     private val _result = MutableLiveData<Boolean>()
     val result: LiveData<Boolean> = _result
-
-    var note: Note = Note()
 
     fun saveNote(): MutableLiveData<Boolean> {
         when (note.createDate) {
