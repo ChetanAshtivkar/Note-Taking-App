@@ -60,7 +60,7 @@ class NoteEditorActivity : BaseActivity() {
         when (item.itemId) {
             R.id.action_save -> viewModel.saveNote().observe(this, Observer { success ->
                 if (success) {
-                    //TODO : Open new activity
+                    finish()
                 }
             })
         }

@@ -5,4 +5,5 @@
     <string name="title_save">SAVE</string>
     <string name="invalid_title">Add title!</string>
     <string name="invalid_content">Add content!</string>
+    <string name="title_new_note">+ New Note</string>
 </resources>

@@ -1,6 +1,9 @@
 package com.chetan.note.ui.noteslist
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -10,6 +13,7 @@ import com.chetan.note.adapter.NotesAdapter
 import com.chetan.note.adapter.NotesListener
 import com.chetan.note.data.database.NoteDB
 import com.chetan.note.databinding.ActivityNotesListBinding
+import com.chetan.note.ui.editor.NoteEditorActivity
 
 class NotesListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNotesListBinding
@@ -34,7 +38,6 @@ class NotesListActivity : AppCompatActivity() {
         viewModel.getNotes()?.observe(this, Observer {
             adapter.submitList(it)
         })
-
     }
 
     private fun setAdapter() {
@@ -42,5 +45,20 @@ class NotesListActivity : AppCompatActivity() {
             //TODO
         })
         binding.notesList.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_new_note, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_new_note -> {
+                val intent = Intent(this@NotesListActivity, NoteEditorActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

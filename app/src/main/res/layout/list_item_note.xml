@@ -20,7 +20,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()-> listener.onClick(note, position)}">
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->listener.onClick(note, position)}">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_start"
@@ -59,8 +62,9 @@
             android:id="@+id/text_note_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin_small"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="@{note.contents}"
             android:textSize="@dimen/text_content"
             app:layout_constraintEnd_toEndOf="@id/guideline_end"
@@ -71,6 +75,7 @@
             android:id="@+id/text_date_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin_small"
             android:textColor="@android:color/tertiary_text_light"
             android:textSize="@dimen/text_content_small"
             app:last_update="@{note.updateDate}"
