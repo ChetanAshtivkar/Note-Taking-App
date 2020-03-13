@@ -3,6 +3,7 @@ package com.chetan.note.data
 import androidx.lifecycle.MutableLiveData
 import com.chetan.note.data.database.NoteDao
 import com.chetan.note.data.model.Note
+import com.chetan.note.ui.editor.NoteResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,8 +13,8 @@ import kotlinx.coroutines.launch
  */
 class NoteRepository(private val noteDao: NoteDao?) {
 
-    fun saveNote(note: Note): MutableLiveData<Boolean> {
-        val data = MutableLiveData<Boolean>()
+    fun saveNote(note: Note): MutableLiveData<NoteResult> {
+        val data = MutableLiveData<NoteResult>()
         CoroutineScope(Dispatchers.IO).launch {
             data.postValue(noteDao?.addOrUpdate(note))
         }

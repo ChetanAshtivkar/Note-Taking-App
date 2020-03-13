@@ -1,8 +1,10 @@
 package com.chetan.note.ui.editor
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +13,7 @@ import com.chetan.note.common.BaseActivity
 import com.chetan.note.data.database.NoteDB
 import com.chetan.note.data.model.Note
 import com.chetan.note.databinding.ActivityNoteEditorBinding
+import com.chetan.note.ui.notedetails.NoteDetailActivity
 import com.chetan.note.ui.noteslist.BUNDLE_NOTE
 
 class NoteEditorActivity : BaseActivity() {
@@ -69,9 +72,20 @@ class NoteEditorActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_save -> viewModel.saveNote().observe(this, Observer { success ->
-                if (success) {
-                    finish()
+            R.id.action_save -> viewModel.saveNote().observe(this, Observer {
+                when (it) {
+                    is NoteResult.Success -> {
+                        val bundle = Bundle()
+                        bundle.putSerializable(BUNDLE_NOTE, it.note)
+                        val intent = Intent(this@NoteEditorActivity, NoteDetailActivity::class.java)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
+                        finish()
+                    }
+                    is NoteResult.Failure -> {
+                        Toast.makeText(this, getString(R.string.generic_error), Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             })
         }

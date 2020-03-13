@@ -19,7 +19,7 @@ class NoteViewModel(private val noteRepository: NoteRepository, val note: Note) 
     private val _result = MutableLiveData<Boolean>()
     val result: LiveData<Boolean> = _result
 
-    fun saveNote(): MutableLiveData<Boolean> {
+    fun saveNote(): MutableLiveData<NoteResult> {
         when (note.createDate) {
             null -> note.createDate = Date()
         }

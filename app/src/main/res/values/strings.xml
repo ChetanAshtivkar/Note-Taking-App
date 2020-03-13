@@ -6,4 +6,5 @@
     <string name="invalid_title">Add title!</string>
     <string name="invalid_content">Add content!</string>
     <string name="title_new_note">+ New Note</string>
+    <string name="generic_error">Something\'s wrong! Please try again.</string>
 </resources>
