@@ -24,15 +24,24 @@ class NoteEditorActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_note_editor)
-        val noteDao = NoteDB.getInstance(applicationContext)?.noteDao()
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        val noteDao = NoteDB.getInstance(applicationContext)?.noteDao()
+        
         viewModel = ViewModelProvider(
             this,
             NoteViewModelFactory(
                 noteDao, intent.extras?.let {
+                    supportActionBar!!.title = getString(R.string.title_edit_note)
+
                     it.getSerializable(BUNDLE_NOTE) as Note
+
                 } ?: run {
+                    supportActionBar!!.title = getString(R.string.title_new_note)
+
                     Note()
+
                 }
             )
         ).get(
@@ -42,8 +51,7 @@ class NoteEditorActivity : BaseActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        setSupportActionBar(binding.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
 
         viewModel.editorStatus.observe(this@NoteEditorActivity, Observer {
             val loginState = it ?: return@Observer

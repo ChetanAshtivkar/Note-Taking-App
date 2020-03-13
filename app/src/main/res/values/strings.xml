@@ -5,6 +5,12 @@
     <string name="title_save">SAVE</string>
     <string name="invalid_title">Add title!</string>
     <string name="invalid_content">Add content!</string>
-    <string name="title_new_note">+ New Note</string>
+    <string name="title_new_note">New Note</string>
     <string name="generic_error">Something\'s wrong! Please try again.</string>
+    <string name="title_created_on">Created on</string>
+    <string name="title_last_updated_on">Last updated on</string>
+    <string name="title_note_title">Title</string>
+    <string name="title_note_content">Content</string>
+    <string name="title_note_details">Note Details</string>
+    <string name="title_edit_note">Edit Note</string>
 </resources>
